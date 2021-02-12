@@ -1,0 +1,164 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+      <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+            <h3 class="mb-0">My Test</h3>
+            <!-- <ol class="breadcrumb p-0 m-0">
+                        <li class="breadcrumb-item active">
+                            Dashboard
+                        </li>
+                    </ol> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div class="container page__container">
+        <div class="row">
+          <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row m-b-20">
+                  <!-- <div class="col-md-3">
+                                    <select class="form-control">
+                                        <option>Select Filter</option>
+                                        <option>Test Name</option>
+                                        <option>Test Category</option>
+                                    </select> 
+                                </div> -->
+                  <div class="offset-md-7 col-md-5">
+                    <div class="float-right margin-sm-4">
+                      <button class="btn btn-primary btn-sm mr-3" routerLink="/test/add-test"> Add New Test</button>
+                      <!-- <button class="btn btn-primary btn-sm mr-3" routerLink="/test/request-approval">Request List</button> -->
+                      <button class="btn btn-danger btn-sm" data-target="#delete-modal" data-toggle="modal"><span
+                          class="material-icons mr-2 icon-image-preview">delete_outline</span> Delete</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row  mt-3 m-b-30">
+                  <div class="offset-md-10 col-md-2">
+                    <mat-form-field>
+                      <mat-label>Filter</mat-label>
+                      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                    </mat-form-field>
+
+                    <!-- <input type="text" class="form-control" placeholder="Search"> -->
+
+                  </div>
+                </div>
+                <div class="mt-4 mat-elevation-z8 table-responsive table table-striped table-bordered nowrap m-0 dataTable no-footer">
+                  <table mat-table [dataSource]="dataSource" class="table">
+                    <ng-container matColumnDef="select">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                        </mat-checkbox> Test Code
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(element) : null" [checked]="selection.isSelected(element)"
+                          [aria-label]="checkboxLabel(element)">
+                          {{element.testCode}}
+                        </mat-checkbox>
+                      </td>
+                    </ng-container>
+
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef>Test Name</th>
+                      <td mat-cell *matCellDef="let element"> {{element.testName}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="questionCount">
+                      <th mat-header-cell *matHeaderCellDef>Total Question</th>
+                      <td mat-cell *matCellDef="let element"> {{element.totalNoOfQuestions || 0}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="difficultyLevel">
+                      <th mat-header-cell *matHeaderCellDef>Difficulty Level</th>
+                      <td mat-cell *matCellDef="let element"> {{element.testDificultyLevel || 'Not Filled yet'}} </td>
+                    </ng-container>
+
+                    <!-- <ng-container matColumnDef="sname">
+                                    <th mat-header-cell *matHeaderCellDef>Assosiated Product</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.sname}} </td>
+                                  </ng-container> -->
+
+                    <ng-container matColumnDef="category">
+                      <th mat-header-cell *matHeaderCellDef> Test Category </th>
+                      <td mat-cell *matCellDef="let element"> {{element.testCategory}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef> Action </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div class="dropdown align-self-center">
+                          <a class="pointer dropdown-toggle float-right arrow-none text-muted" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="material-icons icon-image-preview">more_vert</span>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <!-- item-->
+                            <a class="dropdown-item" routerLink="/test/{{element._id}}/edit-test">Edit Test</a>
+                            <!-- item-->
+                            <a class="dropdown-item" routerLink="/test/{{element._id}}/preview">Test Priview</a>
+                            <a class="dropdown-item" href="javascript:void(0)" (click)="onReject(element)">Rejected</a>
+                            <a class="dropdown-item" href="javascript:void(0)" (click)="onApprove(element)">Approved</a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" (click)="deleteTest(element)"
+                              class="dropdown-item text-danger">Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body text-center">
+      <div class="modal-content">
+        <div class="row">
+          <div class="col-md-12">
+            <span class="text-danger fs-34 material-icons mr-2 icon-image-preview  mb-2">delete_outline</span>
+
+            <h6>Are you sure want to delete?</h6>
+          </div>
+        </div>
+        <hr />
+        <div class="row m-t-15">
+          <div class="col-sm-12">
+            <button type="button" class="btn btn-sm btn-success mr-1" (click)="onDeleteSelected()"
+              data-target="#delete-sccess-modal" data-toggle="modal" data-dismiss="modal">Delete</button>
+            <button type="button" class="btn btn-sm btn-danger ml-1" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

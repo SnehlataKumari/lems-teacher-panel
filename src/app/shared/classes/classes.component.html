@@ -1,0 +1,73 @@
+
+<div class="card card-group-row__card">
+  <div class="card-header d-flex">
+    <div class="flex d-flex align-items-center">
+      <div class="h5 mb-0 text-green-theme mr-3">{{liveClass.date | date}} </div>
+    </div>
+    <button *ngIf="!hideActions" class="btn btn-sm btn-primary btn-sm mr-3" routerLink="/live-class/{{liveClass._id}}/live-stream">Go Live</button>
+    <button *ngIf="!hideActions" routerLink="/live-class/{{liveClass._id}}/view-live-class-details" class="btn btn-sm btn-success btn-sm mr-3">View
+      Details</button>
+
+  </div>
+  <div class="list-group list-group-flush">
+    <div class="list-group-item">
+      <div class="flex ml-4pt">
+        <div class="d-flex flex-column">
+          <h5 class="mb-1">
+            <span class="material-icons text-green-theme fs-25 icon-image-preview">menu_book</span> Session Name</h5>
+          <p class="mb-0 fw-500">{{liveClass.title}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="list-group-item">
+      <div class="flex ml-4pt">
+        <div class="d-flex flex-column">
+          <h5 class="mb-1">
+            <span class="material-icons text-green-theme fs-25 icon-image-preview">flip_camera_android</span> Student
+            No.</h5>
+          <p class="mb-0 fw-500">{{liveClass.allowedNoOfStudents}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="list-group-item">
+      <div class="flex ml-4pt">
+        <div class="d-flex flex-column">
+          <h5 class="mb-1">
+            <span class="material-icons text-green-theme fs-25 icon-image-preview">watch</span>Time</h5>
+          <p class="mb-0 fw-500">{{liveClass.classStartTime}} - {{liveClass.classEndTime}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="list-group-item">
+      <div class="flex ml-4pt">
+        <div class="d-flex flex-column">
+          <h5 class="mb-1">
+            <span class="material-icons text-green-theme fs-25 icon-image-preview">person_pin</span> Demo Students
+          </h5>
+          <p class="mb-0 fw-500">{{liveClass.allowedNoOfDemoStudents}}</p>
+        </div>
+      </div>
+    </div>
+        <div class="list-group-item">
+          <div class="flex ml-4pt">
+            <div class="d-flex flex-column">
+              <h5 class="mb-1">
+                Status</h5>
+              <p class="mb-0 fw-500" *ngIf="liveClass.hasAcceptedRequest">Approved</p>
+              <p class="mb-0 fw-500" *ngIf="liveClass.hasAcceptedRequest == false">Rejected</p>
+              <p class="mb-0 fw-500" *ngIf="liveClass.hasAcceptedRequest == null">Pending....</p>
+            </div>
+          </div>
+        </div>
+        <div class="list-group-item" *ngIf="liveClass.hasAcceptedRequest == false && liveClass.rejectionReason">
+          <div class="flex ml-4pt">
+            <div class="d-flex flex-column">
+              <h5 class="mb-1">
+                Reason for rejection
+              </h5>
+              <p class="mb-0 fw-500">{{liveClass.rejectionReason}}</p>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>

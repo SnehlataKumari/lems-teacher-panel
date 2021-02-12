@@ -1,0 +1,223 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  
+    <div class="mdk-header-layout__content page-content ">
+      <div class="pt-32pt">
+        <div
+          class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+          <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+              <h3 class="mb-0">Test</h3>
+              <ol class="breadcrumb p-0 m-0">
+                <li class="breadcrumb-item"><a>Test</a></li>
+                <li class="breadcrumb-item active">
+                  Add Manual Question
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form [formGroup]="addQuestionForm" (ngSubmit)="saveQuestionDetails()">
+        <div class="page-section">
+          <div class="container page__container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body"  formArrayName="questions" >
+                    <div class="row" *ngFor="let question of questions.controls; index as i" [ngStyle]="{'display': selectedQuestionIndex === i ? 'flex' : 'none'}">
+                      <div class="col-md-12" [formGroupName]="i">
+                        <h6 class="mb-4">Add Questions</h6>
+                        <div class="form-group">
+                          <label><span class="text-danger">*</span> Select Subject <span tooltip="Slide to the right"
+                              flow="right"><span
+                                class="material-icons fs-16 ml-1 icon-image-preview">info</span></span></label>
+                          <select formControlName="subject" class="form-control">
+                            <option>Choose1</option>
+                            <option>Choose2</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label><span class="text-danger">*</span> Select Topic <span tooltip="Slide to the right"
+                              flow="right"><span
+                                class="material-icons fs-16 ml-1 icon-image-preview">info</span></span></label>
+                          <select formControlName="topic" class="form-control">
+                            <option>Choose1</option>
+                            <option>Choose2</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label><span class="text-danger">*</span> Question Type <span tooltip="Slide to the right"
+                              flow="right"><span
+                                class="material-icons fs-16 ml-1 icon-image-preview">info</span></span></label>
+                          <select formControlName="questionType" class="form-control">
+                            <option>Text</option>
+                            <option>MCQ</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Language</label>
+                          <select class="form-control" formControlName="language">
+                            <option>Choose1</option>
+                            <option>Choose2</option>
+                          </select>
+                        </div>
+                        <!-- <div class="form-group">
+                          <label>Total Questions</label>
+                          <input type="text" class="form-control">
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body" formArrayName="questions">
+                    <div class="row" *ngFor="let question of questions.controls; index as i" [ngStyle]="{'display': selectedQuestionIndex === i ? 'flex' : 'none'}">
+                      <div class="col-md-12" [formGroupName]="i">
+                        <div class="form-group">
+                          <label class="w-100"><span class="text-danger">*</span> Type Your Questions<span
+                              tooltip="Slide to the right" flow="right"><span
+                                class="fs-16 ml-1 material-icons icon-image-preview">info</span></span>
+                          </label>
+                          <!-- <div class=" float-right custom-control custom-switch mb-2">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1"></label>
+                          </div> -->
+                          <textarea class="form-control" rows="3" formControlName="questionTitle"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label class="w-100"> Add Explanation
+                          </label>
+                          <textarea class="form-control" rows="3" formControlName="explanation"></textarea>
+                        </div>
+                        <ng-container formArrayName="options" *ngIf="question.get('questionType').value === 'MCQ'">
+                          <div class="form-group" *ngFor="let option of getOptionsControl(question).controls; index as i" [formGroupName]="i">
+                            <label class="w-100"> Option {{i + 1}}
+                            </label>
+                            <textarea class="form-control" rows="3" formControlName="title"></textarea>
+                          </div>
+                        </ng-container>
+                        
+
+                        <div class="form-group">
+                          <h6>Advance Option</h6>
+                        </div>
+                        <div class="form-group">
+                          <label class="w-100"><span class="text-danger">*</span>Add Tags <span
+                              tooltip="Slide to the right" flow="right">
+                              <!-- <span  class="fs-16 ml-1material-icons icon-image-preview">info</span> -->
+                                <span class="material-icons fs-16 ml-1 icon-image-preview">info</span>
+                          </span>
+                          </label>
+                          <input type="text" class="form-control" formControlName="tags">
+                          <!-- <div class="mt-2 custom-control custom-checkbox mb-2">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" >
+                            <label class="custom-control-label" for="customCheck1">Attach Easy</label>
+                          </div> -->
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <label class="w-100"> Right Marks <span tooltip="Slide to the right" flow="right"><span
+                                    class="material-icons fs-16 ml-1 icon-image-preview">info</span></span>
+                              </label>
+                              <input type="number" class="form-control" formControlName="rightMarks">
+                            </div>
+                            <div class="col-md-4">
+                              <label class="w-100"> Negative Marks <span tooltip="Slide to the right" flow="right"><span
+                                    class="material-icons fs-16 ml-1 icon-image-preview">info</span></span>
+                              </label>
+                              <input type="number" class="form-control" formControlName="negativeMarks">
+                            </div>
+                            <div class="col-md-4">
+                              <label class="w-100"> Difficulty Level <span tooltip="Slide to the right" flow="right"><span
+                                    class="material-icons fs-16 ml-1 icon-image-preview">info</span></span>
+                              </label>
+                              <select class="form-control" formControlName="dificultyLevel">
+                                <option>Select Difficulty</option>
+                                <option>Difficulty Level 1</option>
+                                <option>Difficulty Level 2</option>
+                                <option>Difficulty Level 3</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- <div class="form-group">
+                          <div class="row">
+                            <div class="col-md-6 text-center">
+                              <button type="button" class="btn btn-success" (click)="addQuestion()">Add question</button>
+                            </div>
+                            <div class="col-md-6 text-center" [hidden]="questions.length === 1">
+                              <button type="button" class="btn btn-danger" [disabled]="questions.length === 1" (click)="deleteQuestion()">Delete</button>
+                            </div>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-10 p-0 mx-auto">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="selectedQuestionIndex === 0">
+                      <a class="page-link" href="javascript:void(0)"aria-label="Previous"  (click)="gotoPrevQuestion()">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item" *ngFor="let question of questions.controls; index as i">
+                      <a class="page-link" href="javascript:void(0)" (click)="onChangeQuestion(i)">
+                        {{i+1}}
+                        <span class="sr-only" *ngIf="i === selectedQuestionIndex">(current)</span>
+                      </a>
+                    </li>
+                    <li class="page-item" [class.disabled]="selectedQuestionIndex === (questions.controls.length-1)">
+                      <a class="page-link"href="javascript:void(0)" aria-label="Next" (click)="gotoNextQuestion()">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="text-center">
+                  <button [disabled]="addQuestionForm.invalid"
+                    class="btn btn-primary">Save</button>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="text-danger fs-34 material-icons mr-2 icon-image-preview  mb-2">delete_outline</span>
+
+          <h6>Are you sure want to delete?</h6>
+        </div>
+      </div>
+      <hr />
+      <div class="row m-t-15">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-sm btn-success mr-1" data-target="#delete-sccess-modal"
+            data-toggle="modal" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-sm btn-danger ml-1" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

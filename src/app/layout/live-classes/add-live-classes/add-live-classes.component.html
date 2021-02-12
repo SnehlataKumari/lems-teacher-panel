@@ -1,0 +1,192 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+      <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+            <h3 class="mb-0">Add Live Classes / Schedule Live Class</h3>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div class="container page__container">
+        <div class="row">
+          <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+            <form (ngSubmit)="onAddLiveClass()" [formGroup]="addLiveClassForm">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <!-- <div class="col-md-12 form-group">
+                                    <div class="custom-control custom-switch mb-2">
+                                        <input type="checkbox" class="custom-control-input" checked="" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1">Active</label>
+                                    </div>
+                                 </div> -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Title</label>
+                        <input type="text" class="form-control" formControlName="title">
+                        <show-errors [control]="addLiveClassForm.get('title')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Stream Code</label>
+                        <input type="text" class="form-control" formControlName="streamCode">
+                        <show-errors [control]="addLiveClassForm.get('streamCode')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Brief Description</label>
+                        <textarea class="form-control" rows="7" formControlName="description"></textarea>
+                        <show-errors [control]="addLiveClassForm.get('description')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Assign Test</label>
+                        <select class="form-control" formControlName="testId">
+                          <option>Select Quiz Test</option>
+                          <option>Select Quiz Test</option>
+                          <option>Select Quiz Test</option>
+                        </select>
+                        <show-errors [control]="addLiveClassForm.get('testId')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Class Start Time</label>
+                        <input type="time" class="form-control" formControlName="classStartTime">
+                        <show-errors [control]="addLiveClassForm.get('classStartTime')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Date</label>
+                        <input type="date" formControlName="date" class="form-control" />
+                        <!-- <mat-form-field>
+                                            <input matInput [matDatepicker]="picker4" formControlName="date">
+                                            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker4></mat-datepicker>
+                                          </mat-form-field> -->
+                        <show-errors [control]="addLiveClassForm.get('date')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Class End Time</label>
+                        <input type="time" class="form-control" formControlName="classEndTime">
+                        <show-errors [control]="addLiveClassForm.get('classEndTime')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Approx Stream Time</label>
+                        <input type="number" class="form-control" formControlName="approxStreamTime">
+                        <show-errors [control]="addLiveClassForm.get('approxStreamTime')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Number of Students</label>
+                        <input type="number" class="form-control" formControlName="allowedNoOfStudents">
+                        <show-errors [control]="addLiveClassForm.get('allowedNoOfStudents')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger">*</span>Number of Demo Student</label>
+                        <input type="number" class="form-control" formControlName="allowedNoOfDemoStudents">
+                        <show-errors [control]="addLiveClassForm.get('allowedNoOfDemoStudents')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><span class="text-danger"> *</span>Select Group</label>
+                        <select class="form-control" formControlName="selectedGroup">
+                          <option>choose</option>
+                          <option>choose</option>
+                          <option>choose</option>
+                        </select>
+                        <show-errors [control]="addLiveClassForm.get('selectGroup')"></show-errors>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="w-100">Upload Poster</label>
+                        <div class="img-box w-auto">
+                          <div class="img mb-2">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" (change)="singleFiles($event)" class="custom-file-input"
+                                  id="inputGroupFile02">
+                                <!-- <show-errors [control]="addLiveClassForm.get('uploadPoster')"></show-errors> -->
+                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                              </div>
+                            </div>
+                            <!-- <label class="w-100">
+                                                   <input type="file" class="form-control mb-3" accept='image/*' (change)="singleFiles($event)"/>
+                                                   
+                                              </label> -->
+                            <img src="assets/images/young1.png" class="imagefile" width="250px" height="90px" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mx-auto">
+                      <div class="mt-3 text-center form-group" *ngIf="!isSubmitting">
+                        <button class="btn btn-primary">Send Request / Schedule Stream
+                        </button>
+                      </div>
+                      <div class="mt-3 text-center form-group" *ngIf="isSubmitting">
+                        <button type="button" class="btn btn-primary">
+                          <div class="spinner-border text-light mr-3" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div> Submitting...
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="text-danger fs-34 material-icons mr-2 icon-image-preview  mb-2">delete_outline</span>
+
+          <h6>Are you sure want to delete?</h6>
+        </div>
+      </div>
+      <hr />
+      <div class="row m-t-15">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-sm btn-success mr-1" data-target="#delete-sccess-modal"
+            data-toggle="modal" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-sm btn-danger ml-1" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

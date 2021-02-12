@@ -1,0 +1,399 @@
+<div
+  class="mdk-drawer js-mdk-drawer"
+  id="default-drawer"
+  data-align="start"
+  data-position="left"
+  data-domfactory-upgraded="mdk-drawer"
+  data-opened=""
+>
+  <div
+    id="header"
+    class="mdk-header js-mdk-header mb-0"
+    data-domfactory-upgraded="mdk-header"
+    style="padding-top: 64px"
+  >
+    <div class="mdk-header__bg">
+      <div class="mdk-header__bg-front"></div>
+      <div class="mdk-header__bg-rear"></div>
+    </div>
+    <div class="mdk-header__content">
+      <div
+        class="navbar navbar-expand pr-0 navbar-dark-dodger-blue navbar-shadow mdk-header--fixed"
+        id="default-navbar"
+        data-primary="data-primary"
+      >
+        <!-- Navbar Brand -->
+        <button
+          class="navbar-toggler w-auto mr-16pt rounded-0"
+          type="button"
+          data-toggle="sidebar"
+        >
+          <span class="material-icons">short_text</span>
+        </button>
+        <a class="navbar-brand mr-16pt" routerLink="/">
+          <!-- <span class="d-none d-lg-block fs-17">LEMS ACADEMY</span> -->
+          <img
+            src="assets/images/logo_deshboard.png"
+            class="img-fluid wp-90"
+            alt="logo"
+          />
+        </a>
+        <ul
+          class="nav ml-4rem navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLink="/home/dashboard"
+            >
+              <span class="sidebar-menu-text"> Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLink="/test/test"
+            >
+              <span class="sidebar-menu-text">My Test</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/live-class/live-claas"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">My Sessions</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">My Student</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">My Calender</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">Content Library</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/batches/batches"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">Batches</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/batches/faq"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">FAQ</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/batches/reports"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="sidebar-menu-text">Reports</span>
+            </a>
+          </li>
+        </ul>
+        <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+          <!-- Notifications dropdown -->
+          <div
+            class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
+            data-toggle="tooltip"
+            data-title="Messages"
+            data-placement="bottom"
+            data-boundary="window"
+            data-original-title=""
+            title=""
+          >
+            <button
+              class="nav-link btn-flush dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              data-caret="false"
+            >
+              <i class="material-icons icon-24pt">mail_outline</i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div data-perfect-scrollbar="" class="position-relative ps">
+                <div class="dropdown-header"><strong>Messages</strong></div>
+                <div class="list-group list-group-flush mb-0">
+                  <a class="list-group-item list-group-item-action unread">
+                    <span class="d-flex align-items-center mb-1">
+                      <small class="text-black-50">5 minutes ago</small>
+
+                      <span class="ml-auto unread-indicator bg-accent"></span>
+                    </span>
+                    <span class="d-flex">
+                      <span class="avatar avatar-xs mr-2">
+                        <img
+                          src="assets/images/profile.jpg"
+                          alt="people"
+                          class="avatar-img rounded-circle"
+                        />
+                      </span>
+                      <span class="flex d-flex flex-column">
+                        <strong class="text-black-100">Michelle</strong>
+                        <span class="text-black-70"
+                          >Clients loved the new design.</span
+                        >
+                      </span>
+                    </span>
+                  </a>
+
+                  <a
+                    href="javascript:void(0);"
+                    class="list-group-item list-group-item-action"
+                  >
+                    <span class="d-flex align-items-center mb-1">
+                      <small class="text-black-50">5 minutes ago</small>
+                    </span>
+                    <span class="d-flex">
+                      <span class="avatar avatar-xs mr-2">
+                        <img
+                          src="assets/images/profile.jpg"
+                          alt="people"
+                          class="avatar-img rounded-circle"
+                        />
+                      </span>
+
+                      <span class="flex d-flex flex-column">
+                        <strong class="text-black-100">Michelle</strong>
+                        <span class="text-black-70"> Superb job..</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px">
+                  <div
+                    class="ps__thumb-x"
+                    tabindex="0"
+                    style="left: 0px; width: 0px"
+                  ></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; right: 0px">
+                  <div
+                    class="ps__thumb-y"
+                    tabindex="0"
+                    style="top: 0px; height: 0px"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- // END Notifications dropdown -->
+
+          <!-- Notifications dropdown -->
+          <div
+            class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
+            data-toggle="tooltip"
+            data-title="Notifications"
+            data-placement="bottom"
+            data-boundary="window"
+            data-original-title=""
+            title=""
+          >
+            <button
+              class="nav-link btn-flush dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              data-caret="false"
+            >
+              <i class="material-icons">notifications_none</i>
+              <span class="badge badge-notifications badge-accent">2</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div data-perfect-scrollbar="" class="position-relative ps">
+                <div class="dropdown-header">
+                  <strong>System notifications</strong>
+                </div>
+                <div class="list-group list-group-flush mb-0">
+                  <a
+                    href="javascript:void(0);"
+                    class="list-group-item list-group-item-action unread"
+                  >
+                    <span class="d-flex align-items-center mb-1">
+                      <small class="text-black-50">3 minutes ago</small>
+
+                      <span class="ml-auto unread-indicator bg-accent"></span>
+                    </span>
+                    <span class="d-flex">
+                      <span class="avatar avatar-xs mr-2">
+                        <span class="avatar-title rounded-circle bg-light">
+                          <i class="material-icons font-size-16pt text-accent"
+                            >account_circle</i
+                          >
+                        </span>
+                      </span>
+                      <span class="flex d-flex flex-column">
+                        <span class="text-black-70"
+                          >Your profile information has not been synced
+                          correctly.</span
+                        >
+                      </span>
+                    </span>
+                  </a>
+
+                  <a
+                    href="javascript:void(0);"
+                    class="list-group-item list-group-item-action"
+                  >
+                    <span class="d-flex align-items-center mb-1">
+                      <small class="text-black-50">5 hours ago</small>
+                    </span>
+                    <span class="d-flex">
+                      <span class="avatar avatar-xs mr-2">
+                        <span class="avatar-title rounded-circle bg-light">
+                          <i class="material-icons font-size-16pt text-primary"
+                            >group_add</i
+                          >
+                        </span>
+                      </span>
+                      <span class="flex d-flex flex-column">
+                        <strong class="text-black-100">Adrian. D</strong>
+                        <span class="text-black-70"
+                          >Wants to join your private group.</span
+                        >
+                      </span>
+                    </span>
+                  </a>
+
+                  <a
+                    href="javascript:void(0);"
+                    class="list-group-item list-group-item-action"
+                  >
+                    <span class="d-flex align-items-center mb-1">
+                      <small class="text-black-50">1 day ago</small>
+                    </span>
+                    <span class="d-flex">
+                      <span class="avatar avatar-xs mr-2">
+                        <span class="avatar-title rounded-circle bg-light">
+                          <i class="material-icons font-size-16pt text-warning"
+                            >storage</i
+                          >
+                        </span>
+                      </span>
+                      <span class="flex d-flex flex-column">
+                        <span class="text-black-70"
+                          >Your deploy was successful.</span
+                        >
+                      </span>
+                    </span>
+                  </a>
+                </div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px">
+                  <div
+                    class="ps__thumb-x"
+                    tabindex="0"
+                    style="left: 0px; width: 0px"
+                  ></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; right: 0px">
+                  <div
+                    class="ps__thumb-y"
+                    tabindex="0"
+                    style="top: 0px; height: 0px"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <!-- <a class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown" data-caret="false">
+                                <span class="avatar avatar-sm mr-8pt2">
+                                    <span class="avatar-title rounded-circle bg-secondary"><i class="material-icons">account_box</i></span>
+                                </span>
+                            </a> -->
+
+            <a
+              *ngIf="!(authService.$user | async)?.profileImage"
+              _ngcontent-mfc-c156=""
+              data-toggle="dropdown"
+              data-caret="false"
+              class="nav-link d-flex align-items-center dropdown-toggle"
+              ><span _ngcontent-mfc-c156="" class="avatar avatar-sm mr-8pt2"
+                ><span
+                  _ngcontent-mfc-c156=""
+                  class="avatar-title rounded-circle bg-secondary"
+                  ><i _ngcontent-mfc-c156="" class="material-icons"
+                    >account_box</i
+                  ></span
+                ></span
+              ></a
+            >
+            <img
+              data-toggle="dropdown"
+              *ngIf="(authService.$user | async)?.profileImage"
+              [src]="authService.$user.value.profileImage"
+              class="result avatar-sm rounded-circle dropdown-toggle"
+            />
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-header"><strong>Account</strong></div>
+              <a class="dropdown-item pointer" routerLink="/home/profile">
+                Edit Profile</a
+              >
+              <a class="dropdown-item pointer" routerLink="/home/help-support"
+                >Help</a
+              >
+              <a
+                class="dropdown-item pointer"
+                href="javascript:void(0)"
+                (click)="openChatSupport()"
+                >Live Chat Support</a
+              >
+              <a class="dropdown-item pointer" routerLink="/home/apply-leave"
+                >Request For Leave</a
+              >
+              <!--<a class="dropdown-item">Payments</a> -->
+              <a class="dropdown-item pointer" (click)="onLogout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-chat
+      [adapter]="adapter"
+      [hideFriendsList]="true"
+      [userId]="1"
+      #ngChatInstance
+    ></ng-chat>
+  </div>
+</div>

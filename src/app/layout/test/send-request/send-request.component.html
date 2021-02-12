@@ -1,0 +1,137 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+      <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+            <h3 class="mb-0">Test</h3>
+            <ol class="breadcrumb p-0 m-0">
+              <li class="breadcrumb-item"><a>Test</a></li>
+              <li class="breadcrumb-item active">
+                Send Request for Accepting the test
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div class="container page__container">
+        <div class="row">
+          <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+            <div class="py-32pt navbar-submenu">
+              <div class="container page__container">
+                <div class="progression-bar progression-bar--active-accent">
+                  <a routerLink="/test/{{testId}}/edit-test" class="progression-bar__item progression-bar__item--complete">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon">done</i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Create Test</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/test-setting" class="progression-bar__item progression-bar__item--complete">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon">done</i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Test Setting</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/add-questions" class="progression-bar__item progression-bar__item--complete">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon">done</i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Add Questions</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/send-request" class="progression-bar__item progression-bar__item--complete progression-bar__item--active">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Publish Now</span>
+                    </span>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form [formGroup]="publishForm" (ngSubmit)="onFormSubmit()">
+          <div class="mt-4 row">
+            <div class="col-md-10 p-0 mx-auto">
+              <div class="list-group list-group-item list-group-form mb-0">
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <div class="custom-control custom-switch mb-2">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                        formControlName="isPublished">
+                      <label class="custom-control-label" for="customSwitch1">Click here to Publish Now</label>
+                    </div>
+                    <h6 class="mt-3 mb-0">To Specify the Tentative Dates</h6>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="w-100">Start Date</label>
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker4" formControlName="startDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                        <mat-datepicker #picker4></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="w-100">End Date</label>
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker3" formControlName="endDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="w-100">Start Time</label>
+                      <div class="controls">
+                        <div class="toggle-example">
+                          <input formControlName="startTime" [ngxTimepicker]="toggleTimepicker" class="form-control"
+                            [disableClick]="true" readonly>
+                          <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+                          <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="w-100">End Time</label>
+                      <div class="controls">
+                        <div class="toggle-example">
+                          <input formControlName="endTime" [ngxTimepicker]="toggleTimepicker1" class="form-control"
+                            [disableClick]="true" readonly>
+                          <ngx-material-timepicker-toggle [for]="toggleTimepicker1"></ngx-material-timepicker-toggle>
+                          <ngx-material-timepicker #toggleTimepicker1></ngx-material-timepicker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 row">
+            <div class="col-md-10 p-0 mx-auto">
+              <div class="mt-4 text-center">
+                <button  routerLink="/test/{{testId}}/add-questions"
+                  class="btn btn-danger mr-3">Previous</button>
+                <button class="btn btn-primary"
+                  [disabled]="publishForm.invalid"
+                >Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

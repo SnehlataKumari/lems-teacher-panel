@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label class="form-control-label">{{title}}</label>
+  <div class="input-group">
+    <input type="file" class="form-control" [multiple]="isMultiple" (change)="onFilechange($event.target.files)">
+  </div>
+</div>

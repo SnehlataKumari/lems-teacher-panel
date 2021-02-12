@@ -1,0 +1,19 @@
+<div class="row live-class-wrapper" >
+  <div class="col-md-10" ><app-netless-whiteboard #whiteBoad></app-netless-whiteboard></div>
+  
+  <div class="col-md-2">
+    <div class="video-grid" id="video">
+      <div class="video-view">
+        <div id="local_stream"  class="video-placeholder">
+          <img id="defaultImage" *ngIf="!broadcastClass" src="\assets\images\icon\user_placeholder_header.svg"/>
+        </div>
+        <div id="local_video_info" class="video-profile hide">
+
+        </div>
+        <div id="video_autoplay_local" class="autoplay-fallback hide"></div>
+        <button class="btn btn-success" (click)="startChannel()" [disabled]="!canBroadcastClass">Start class</button>
+        <button class="btn btn-danger" (click)="leaveChannel()">Leave class</button>
+      </div>
+    </div>
+  </div>
+</div>

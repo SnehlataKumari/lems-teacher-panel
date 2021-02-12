@@ -1,0 +1,49 @@
+<app-header></app-header> 
+<div class="pcoded-main-container">
+    <app-sidebar></app-sidebar>
+<div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+        <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+            <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+                <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                    <h3 class="mb-0">Completed Session > <a routerLink="/live-class/live-claas">Back</a></h3>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div class="container page__container">
+            <div class="row">
+                <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+                   <div class="row">
+                     <div class="col-md-3">
+                     </div>
+                     <div class="offset-md-5 col-md-4">
+                         <div class="d-flex">
+                             <input type="text" class="form-control" (keyup)="applyFilter($event)" placeholder="search">
+                         </div>
+                     </div>
+                   </div>
+                   <div class="row mt-4">
+                      <div *ngFor="let liveClass of viewList" [liveClass]="liveClass" app-classes
+                        class="col-lg-4 card-group-row__col">
+                      </div>
+                      
+                      <div class="col-md-12">
+                        <div class="mb-32pt">
+                            <div class="float-right">
+                                <mat-paginator (page)="changedPagination($event)" [length]="length" [pageSize]="pageSize"
+                                  [pageSizeOptions]="[5, 10, 25, 100]">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<app-footer></app-footer> 

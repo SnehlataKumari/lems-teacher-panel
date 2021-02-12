@@ -1,0 +1,425 @@
+<div class="authentication-bg">
+    <div class="account-pages py-5">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-xl-8">
+                  <div class="card1">
+                      <div class="card-body p-0">
+                          <div class="row">
+                              <!-- <div class="col-lg-6 d-none d-md-inline-block">
+                                  <div class="auth-page-sidebar">
+                                      <div class="overlay"></div>
+                                  </div>
+                              </div> -->
+                              <div class="col-md-12 p-5">
+                                  <div class="mx-auto mb-4">
+                                      <a routerLink="/">
+                                        <img src="assets/images/logo_login.svg"  width="10px"  class="b-r-4 img-100 img-fluid" alt="" height="" />
+                                      </a>
+                                  </div> 
+                                  <h6 class="h5 mb-0 mt-4">Create your account</h6>
+                                  <p class="text-muted mb-3"></p>
+                                  <form class="authentication-form" (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+                                      <div class="row">
+                                        <ng-container formGroupName="user">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <!-- first name is required but while editing profile one can set first name to blank
+                                              Also invalid credentials is showing on typing wrong password -->
+                                                <label class="form-control-label">First Name <span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="firstName" class="form-control" formControlName="firstName" id="fistName" placeholder="">
+                                                </div>
+                                                <show-errors [control]="registrationForm.get('user.firstName')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Last Name <span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="lastName" class="form-control" formControlName="lastName" id="lastName" placeholder="">
+                                                </div>
+                                                <show-errors [control]="registrationForm.get('user.lastName')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Gender</label>
+                                                <div class="custom-control custom-radio mb-2">
+                                                    <input type="radio" id="male" name="gender" formControlName="gender" class="custom-control-input" value="MALE">
+                                                    <label class="custom-control-label" for="male">Male</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="female" name="gender" formControlName="gender" class="custom-control-input" value="FEMALE">
+                                                    <label class="custom-control-label" for="female">Female</label>
+                                                </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Email Id <span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="email" name="email" formControlName="email" class="form-control" id="email" placeholder="example@gmail.com">
+                                                </div>
+                                                <show-errors [control]="registrationForm.get('user.email')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Phone Number<span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="number" name="phone" formControlName="phone" class="form-control" id="phone" placeholder="">
+                                                </div>
+                                                <show-errors [control]="registrationForm.get('user.phone')"></show-errors>
+                                                <small *ngIf="registrationForm.get('user.phone').hasError('pattern') && registrationForm.get('user.phone').touched"
+                                                  id="passwordHelpBlock" class="form-text text-danger">
+                                                  Phone number must be 10 digits
+                                                </small>
+                                            </div>
+                                          </div>
+                                        </ng-container>
+                                        <ng-container formGroupName="teacher">
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Highest Qualification</label>
+                                              <div class="input-group input-group-merge">
+                                                <select name="highestQualification" formControlName="highestQualification" id="qualification" class="form-control">
+                                                  <option value="choose1">choose</option>
+                                                  <option value="choose2">choose</option>
+                                                  <option value="choose3">choose</option>
+                                                  <option value="choose4">choose</option>
+                                                </select>
+                                              </div>
+                                              <show-errors [control]="registrationForm.get('teacher.highestQualification')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Specialization along with your college details <span
+                                                  class="text-danger">*</span></label>
+                                              <div class="input-group input-group-merge">
+                                                <input type="collegeDetails" name="collegeDetails" formControlName="collegeDetails" class="form-control"
+                                                  id="password" placeholder="">
+                                              </div>
+                                              <show-errors [control]="registrationForm.get('teacher.collegeDetails')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Year of experience in teaching <span class="text-danger">*</span></label>
+                                              <div class="input-group input-group-merge">
+                                                <select class="form-control" formControlName="teachingExperience">
+                                                  <option value="option1">1</option>
+                                                  <option value="option2">2</option>
+                                                  <option value="option3">3</option>
+                                                  <option value="option4">4</option>
+                                                </select>
+                                              </div>
+                                              <show-errors [control]="registrationForm.get('teacher.teachingExperience')"></show-errors>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-12">
+                                            <app-custom-checkbox-formgroup title="Primary subject of teaching" [required]="true" id="primaryTeachingSubjects_"
+                                              [optionsList]="subjects" formGroupName="primaryTeachingSubjects"></app-custom-checkbox-formgroup>
+                                              <show-errors [control]="registrationForm.get('teacher.primaryTeachingSubjects')"></show-errors>
+                                          </div>
+
+                                          <div class="col-md-12">
+                                            <app-custom-checkbox-formgroup
+                                              formGroupName="secondaryTeachingSubjects"
+                                              title="Secondary subject of teaching"
+                                              [required]="true"
+                                              id="secondaryTeachingSubjects_"
+                                              [optionsList]="subjects"
+                                            ></app-custom-checkbox-formgroup>
+                                            <show-errors [control]="registrationForm.get('teacher.secondaryTeachingSubjects')"></show-errors>
+                                          </div>
+                                          
+                                          <div class="col-md-12">
+                                            <app-custom-checkbox-formgroup
+                                              formGroupName="gradeToTeach"
+                                              title="Kindly Mark which grade students you would love to teach"
+                                              [required]="true"
+                                              id="gradeRangeList_"
+                                              [optionsList]="gradeRangeList"
+                                            ></app-custom-checkbox-formgroup>
+                                            <show-errors [control]="registrationForm.get('teacher.gradeToTeach')"></show-errors>
+                                          </div>
+                                          
+                                          <div class="col-md-12">
+                                            <app-custom-checkbox-formgroup
+                                              formGroupName="board"
+                                              title="Board you can handle"
+                                              [required]="true"
+                                              id="boardList_"
+                                              [optionsList]="boardsList"
+                                            ></app-custom-checkbox-formgroup>
+                                            <show-errors [control]="registrationForm.get('teacher.board')"></show-errors>
+                                          </div>
+
+                                          <div class="col-md-12">
+                                            <div class="form-group" formGroupName="teachingHours">
+                                              <label class="form-control-label">Hours you will be available per day for teaching</label>
+                                              <div class="row">
+                                                <div class="col-md-6">
+                                                  <label class="form-control-label">Weekdays</label>
+                                                  <select class="form-control" formControlName="weekdays">
+                                                    <option value="1 hours">1 hours</option>
+                                                    <option value="2 hours">2 hours</option>
+                                                    <option value="3 hours">3 hours</option>
+                                                  </select>
+                                                  <show-errors [control]="registrationForm.get('teacher.teachingHours.weekdays')"></show-errors>
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <label class="form-control-label">Weekends</label>
+                                                  <select class="form-control" formControlName="weekends">
+                                                    <option value="1 hours">1 hours</option>
+                                                    <option value="2 hours">2 hours</option>
+                                                    <option value="3 hours">3 hours</option>
+                                                  </select>
+                                                  <show-errors [control]="registrationForm.get('teacher.teachingHours.weekends')"></show-errors>
+                                                </div>
+                                              </div>
+                                          
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-12">
+                                            <app-custom-checkbox-formgroup formGroupName="availableTimes" title="Available Timings" [required]="true"
+                                              id="availableTimes_" [optionsList]="availableTimes"></app-custom-checkbox-formgroup>
+                                              <show-errors [control]="registrationForm.get('teacher.availableTimes')"></show-errors>
+                                          </div>
+
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Current Occupation <span class="text-danger">*</span></label>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="occupation1" value="Full-Time Teacher" formControlName="currentOccupation" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="occupation1">Full-Time Teacher</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="occupation2" value="Freelancer" formControlName="currentOccupation" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="occupation2">Freelancer</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="occupation3" value="Working Professional" formControlName="currentOccupation" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="occupation3">Working Professional</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="occupation4" value="College Student" formControlName="currentOccupation" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="occupation4">College Student</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="occupation5" value="Not Working" formControlName="currentOccupation" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="occupation5">Not Working</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="occupation6" value="Others" formControlName="currentOccupation" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="occupation6">Others</label>
+                                              </div>
+                                            </div>
+                                            <show-errors [control]="registrationForm.get('teacher.currentOccupation')"></show-errors>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Date of birth<span class="text-danger">*</span></label>
+                                              <mat-form-field class="dob">
+                                                <input type="text" class="dob" formControlName="dateOfBirth" matInput [matDatepicker]="picker3">
+                                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker3></mat-datepicker>
+                                              </mat-form-field>
+                                              <show-errors [control]="registrationForm.get('teacher.dateOfBirth')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Type of internet connection <span class="text-danger">*</span></label>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="connection1" value="Broadband" formControlName="typeOfInternetConnection" class="custom-control-input"
+                                                  checked="">
+                                                <label class="custom-control-label" for="connection1">Broadband</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="connection2" value="Wifi" formControlName="typeOfInternetConnection" class="custom-control-input"
+                                                  checked="">
+                                                <label class="custom-control-label" for="connection2">Wifi</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="connection3" value="Dongle" formControlName="typeOfInternetConnection" class="custom-control-input"
+                                                  checked="">
+                                                <label class="custom-control-label" for="connection3">Dongle</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="connection4" value="Mobile" formControlName="typeOfInternetConnection" class="custom-control-input"
+                                                  checked="">
+                                                <label class="custom-control-label" for="connection4">Mobile</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="connection44" value="Cable" formControlName="typeOfInternetConnection" class="custom-control-input"
+                                                  checked="">
+                                                <label class="custom-control-label" for="connection44">Cable</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="connection5" value="Others" formControlName="typeOfInternetConnection" class="custom-control-input"
+                                                  checked="">
+                                                <label class="custom-control-label" for="connection5">Others</label>
+                                              </div>
+                                            </div>
+                                            <show-errors [control]="registrationForm.get('teacher.typeOfInternetConnection')"></show-errors>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Download speed of your internet Connection<span
+                                                  class="text-danger">*</span></label>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="download1" value="512 Kbps" formControlName="downloadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="download1">512 Kbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="download2" value="1 Mbps" formControlName="downloadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="download2">1 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="download3" value="2 Mbps" formControlName="downloadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="download3">2 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="download4" value="4 Mbps" formControlName="downloadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="download4">4 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="download5" value="More than 4 Mbps"  formControlName="downloadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="download5">More than 4 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="download6" value="Others"  formControlName="downloadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="download6">Others</label>
+                                              </div>
+                                            </div>
+                                            <show-errors [control]="registrationForm.get('teacher.downloadSpeed')"></show-errors>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Upload speed of your internet Connection<span class="text-danger">*</span></label>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="upload1" value="512 Kbps" formControlName="uploadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="upload1">512 Kbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="upload2" value="1 Mbps" formControlName="uploadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="upload2">1 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="upload3" value="2 Mbps" formControlName="uploadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="upload3">2 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="upload4" value="4 Mbps" formControlName="uploadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="upload4">4 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="upload5" value="More than 4 Mbps" formControlName="uploadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="upload5">More than 4 Mbps</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="upload6" value="Others" formControlName="uploadSpeed" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="upload6">Others</label>
+                                              </div>
+                                            </div>
+                                            <show-errors [control]="registrationForm.get('teacher.uploadSpeed')"></show-errors>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <app-file-field title="Screen short of your internet connection" (onSelectFile)="onInterConnectionFile($event)"></app-file-field>
+                                            <show-errors [control]="registrationForm.get('teacher.internetConnectionFile')"></show-errors>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">You association with LEMS Academy is for <span
+                                                  class="text-danger">*</span></label>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="source1" value="Primary source of income" formControlName="associationWithLems" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="source1">Primary source of income</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="source2" value="Additional source of income" formControlName="associationWithLems" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="source2">Additional source of income</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="source3" value="Pursu your Passion" formControlName="associationWithLems" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="source3">Pursu your Passion</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="source4" value="Others" formControlName="associationWithLems" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="source4">Others</label>
+                                              </div>
+                                            </div>
+                                            <show-errors [control]="registrationForm.get('teacher.associationWithLems')"></show-errors>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Your Location<span class="text-danger">*</span></label>
+                                              <div class="input-group input-group-merge">
+                                                <input type="text" formControlName="location" class="form-control" placeholder="">
+                                              </div>
+                                              <show-errors [control]="registrationForm.get('teacher.location')"></show-errors>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label">How did you come to know about LEMS Academy<span
+                                                  class="text-danger">*</span></label>
+                                              <div class="input-group input-group-merge">
+                                                <input type="text" formControlName="howKnowLemsAcademy" class="form-control" placeholder="">
+                                              </div>
+                                              <show-errors [control]="registrationForm.get('teacher.howKnowLemsAcademy')"></show-errors>
+                                            </div>
+
+                                          </div>
+                                          <div class="col-md-12">
+                                            <app-file-field title="Resume" (onSelectFile)="onSelectResume($event)"></app-file-field>
+                                            <show-errors [control]="registrationForm.get('teacher.resumeFile')"></show-errors>
+                                          </div>
+                                        </ng-container>
+                                      </div>
+                                    
+                                      <div class="form-group mt-4 mb-4">
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input"
+                                                  id="checkbox-signin" [formControl]="termsAndConditions" >
+                                              <label class="custom-control-label" for="checkbox-signin">
+                                                I accept <a class="font-weight-bold text-primary">Terms and Conditions</a>
+                                              </label>
+                                          </div>
+                                          <show-errors [control]="registrationForm.get('teacher.termsAndConditions')"></show-errors>
+                                      </div>
+                                      <div class="form-group mb-0 text-center">
+                                        <!-- TODO:disabled -->
+                                          <button 
+                                            [disabled]="registrationForm.invalid"
+                                          class="btn btn-block btn-filled form-btn">
+                                              <span class="bh"></span>
+                                              <span>Register Now</span>
+                                          </button>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div> 
+                      </div> <!-- end card-body -->
+                  </div>
+              </div> <!-- end col -->
+
+              <div class="col-md-10">
+                <div class="mt-3 form-group mb-0 text-center">
+                    <p class="mb-0 white">Already have an account? <a class="white font-weight-bold ml-1" routerLink="/login">Log In</a>
+                    </p>
+                </div>
+            </div>
+          </div>
+          <!-- end row -->
+      </div>
+      <!-- end container -->
+    </div>
+  </div>
+  
+  

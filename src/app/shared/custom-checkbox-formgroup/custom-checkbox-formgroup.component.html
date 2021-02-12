@@ -1,0 +1,6 @@
+<div class="form-group" [formGroup]="controlContainer.control">
+  <label class="form-control-label">{{title}}<span class="text-danger" *ngIf="required">*</span> <span *ngIf="required"
+      tooltip="Your selection demo session will be based on this subject." flow="right"></span></label>
+  <app-custom-checkbox-field *ngFor="let option of optionsList;" [id]="id+option"
+    [label]="option" [formControlName]="option"></app-custom-checkbox-field>
+</div>

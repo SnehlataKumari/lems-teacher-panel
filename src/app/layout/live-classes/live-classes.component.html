@@ -1,0 +1,87 @@
+<app-header></app-header> 
+<div class="pcoded-main-container">
+    <app-sidebar></app-sidebar>
+<div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+        <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+            <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+                <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                    <h3 class="mb-0">My Sessions</h3>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div class="container page__container">
+            <div class="row">
+                <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+                  <div class="row m-b-40">
+                      <div class="col-md-3">
+                      </div>
+                      <div class="offset-md-4 col-md-5">
+                          <div class="float-right margin-sm-4">
+                              <button class="btn btn-primary btn-sm mr-3" routerLink="/live-class/add-live-claas"><i class="uil-plus-circle"></i> Add Live Classes</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="page-separator">
+                       <div class="page-separator__text">All Sessions</div>
+                   </div>
+                   <div class="row">
+                    <div class="col-sm-4 col-12 col-md-4 col-mg-4 card-group-row__col">
+                          <div class="card stack stack--1 card-group-row__card bg-active-color">
+                              <div class="card-body d-flex flex-column">
+                                <div class="text-center">
+                                     <div class="card-title fw-600">Current</div>
+                                 </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <div class="col-sm-4 col-12 col-md-4 col-mg-4 card-group-row__col pointer">
+                        <div class="card stack stack--1 card-group-row__card bg-active-color">
+                            <div class="card-body d-flex flex-column" routerLink="/live-class/upcoming-classes">
+                              <div class="text-center">
+                                    <div class="card-title fw-600">Upcoming</div>
+                               </div>
+                            </div> 
+                        </div>  
+                    </div>
+                    <div class="col-sm-4 col-12 col-md-4 col-mg-4 card-group-row__col pointer">
+                      <div class="card stack stack--1 card-group-row__card bg-active-color">
+                          <div class="card-body d-flex flex-column" routerLink="/live-class/complate-classes">
+                            <div class="text-center">
+                                  <div class="card-title fw-600">Completed</div>
+                             </div>
+                          </div> 
+                      </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-3">
+                     </div>
+                     <div class="offset-md-5 col-md-4">
+                         <div class="d-flex">
+                             <input type="text" (keyup)="applyFilter($event)" class="form-control" placeholder="search">
+                         </div>
+                     </div>
+                   </div>
+                   <div class="row mt-4">
+                      <div *ngFor="let liveClass of filteredClasses" [liveClass]="liveClass" app-classes class="col-lg-4 card-group-row__col"> 
+                      </div>
+                      <div class="col-md-12">
+                        <div class="mb-32pt">
+                            <div class="float-right">
+                                <mat-paginator (page)="changedPagination($event)" [length]="length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<app-footer></app-footer> 

@@ -1,0 +1,3 @@
+.ng-invalid:not(form):not(div).ng-touched.dob{
+  border: unset !important;
+}

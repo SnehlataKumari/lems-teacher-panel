@@ -1,0 +1,621 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+      <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+            <h3 class="mb-0">Test</h3>
+            <ol class="breadcrumb p-0 m-0">
+              <li class="breadcrumb-item"><a>Test</a></li>
+              <li class="breadcrumb-item active">
+                Add Test
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div class="container page__container">
+        <div class="row">
+          <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+            <div class="py-32pt navbar-submenu">
+              <div class="container page__container">
+                <div class="progression-bar progression-bar--active-accent">
+                  <a routerLink="/test/{{testId}}/edit-test" class="progression-bar__item progression-bar__item--complete">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon">done</i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Create Test</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/test-setting" class="progression-bar__item progression-bar__item--complete progression-bar__item--active">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Test Setting</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/add-questions" class="progression-bar__item">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Add Question</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/send-request" class="progression-bar__item">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Publish Now</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form (ngSubmit)="onTestSetting()" [formGroup]="testSettingForm">
+          <div class="mt-4 row">
+            <div class="col-md-10 p-0 mx-auto">
+              <div class="accordion js-accordion accordion--boxed list-group-flush" id="parent">
+                <div class="accordion__item open" formGroupName="arrangementAndGroupingRandomQuestion">
+
+                  <a class="accordion__toggle" data-toggle="collapse" data-target="#course-toc-2" data-parent="#parent">
+                    <span class="flex">Arrangement & Grouping (Random Question)</span>
+                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                  </a>
+                  <div class="accordion__menu collapse show" id="course-toc-2">
+                    <div class="accordion__menu-link">
+                      <span
+                        class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
+                        <i class="material-icons icon-16pt">check_circle</i>
+                      </span>
+                      <a class="flex">Shuffle and bundle questions to create vivid sets with similar questions</a>
+                    </div>
+                    <div class="test-page-p">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Grouping</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Shuffle questions with subjects</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" formControlName="shuffleQuestionWithSubject"
+                                          id="shuffleQuestionWithSubject1" [value]="true" class="custom-control-input">
+                                        <label class="custom-control-label" for="shuffleQuestionWithSubject1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="shuffleQuestionWithSubject"
+                                          id="shuffleQuestionWithSubject2" class="custom-control-input">
+                                        <label class="custom-control-label" for="shuffleQuestionWithSubject2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Group Questions Subjectwise</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="groupQuestionSubjectwise" id="groupQuestionSubjectwise1"
+                                          class="custom-control-input">
+                                        <label class="custom-control-label" for="groupQuestionSubjectwise1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="groupQuestionSubjectwise" id="groupQuestionSubjectwise2"
+                                          class="custom-control-input">
+                                        <label class="custom-control-label" for="groupQuestionSubjectwise2" >No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Shuffling</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Optionwise Suffling</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="optionwiseShuffeling" id="optionwiseShuffeling1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="optionwiseShuffeling1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="optionwiseShuffeling" id="optionwiseShuffeling2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="optionwiseShuffeling2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion__item" formGroupName="timeSetting">
+                  <a class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-1"
+                    data-parent="#parent">
+                    <span class="flex"> Time Setting </span>
+                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                  </a>
+                  <div class="accordion__menu collapse" id="course-toc-1">
+                    <div class="accordion__menu-link">
+                      <span
+                        class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
+                        <i class="material-icons icon-16pt">check_circle</i>
+                      </span>
+                      <a class="flex">Amend the clock Settings for a test</a>
+                    </div>
+                    <div class="test-page-p">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Time Bound</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">The Candidate has to finish the test in between the allocated time
+                                  frame</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="timeBound" id="timeBound1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="timeBound1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="timeBound" id="timeBound2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="timeBound2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Clock Format</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Select Clock Format</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" value="hh:mm" formControlName="clockFormat" id="clockFormat1"
+                                          class="custom-control-input">
+                                        <label class="custom-control-label" for="clockFormat1">hh:mm</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" value="mm:ss" formControlName="clockFormat" id="clockFormat2"
+                                          class="custom-control-input">
+                                        <label class="custom-control-label" for="clockFormat2">mm:ss</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i>Section Wise Time
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">If required you can allocate time to each section</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="alloteTimeToEachSection" id="alloteTimeToEachSection1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="alloteTimeToEachSection1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="alloteTimeToEachSection" id="alloteTimeToEachSection2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="alloteTimeToEachSection2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Question Wise Time
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Automise time for all questions in test</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="questionWiseTime" id="questionWiseTime1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="questionWiseTime1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="questionWiseTime" id="questionWiseTime2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="questionWiseTime2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion__item">
+                  <a class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-3"
+                    data-parent="#parent">
+                    <span class="flex">Generate Rank</span>
+                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                  </a>
+                  <div class="accordion__menu collapse" id="course-toc-3">
+                    <div class="accordion__menu-link">
+                      <span
+                        class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
+                        <i class="material-icons icon-16pt">check_circle</i>
+                      </span>
+                      <a class="flex">Amend the clock Settings for a test</a>
+                    </div>
+                    <div class="test-page-p">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Generate Rank
+                                Settings</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Show Reports </h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="generateRank" id="generateRank1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="generateRank1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="generateRank" id="generateRank2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="generateRank2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion__item">
+                  <a class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-4"
+                    data-parent="#parent">
+                    <span class="flex"> Candidate Report Setting</span>
+                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                  </a>
+                  <div class="accordion__menu collapse" id="course-toc-4">
+                    <div class="accordion__menu-link">
+                      <span
+                        class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
+                        <i class="material-icons icon-16pt">check_circle</i>
+                      </span>
+                      <a class="flex">Share report with candidate as per your subsequent selection</a>
+                    </div>
+                    <div class="test-page-p">
+
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Candidate Report
+                                Settings</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Show Reports </h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="candidateReport" id="candidateReport1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="candidateReport1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" formControlName="candidateReport" id="candidateReport2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="candidateReport2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion__item">
+                  <a class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-5"
+                    data-parent="#parent">
+                    <span class="flex"> Multiple Attemps Settings</span>
+                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                  </a>
+                  <div class="accordion__menu collapse" id="course-toc-5">
+                    <div class="test-page-p">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Multiple Attemps
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Enable Multiple attemp of test by a candidate </h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" formControlName="multipleAttempt" id="multipleAttempt1"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="multipleAttempt1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]=false formControlName="multipleAttempt" id="multipleAttempt2"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="multipleAttempt2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion__item">
+                  <a class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-6"
+                    data-parent="#parent">
+                    <span class="flex"> Full Screen Settings</span>
+                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                  </a>
+                  <div class="accordion__menu collapse" formGroupName="fullScreen" id="course-toc-6">
+                    <div class="test-page-p">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-success"> <i class="uil uil-slack-alt"></i> Full Screen Mode
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">Take Test in full screen Mode </h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="grouping-ul">
+                                  <ul>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="true" id="fullScreenMode1" formControlName="fullScreenMode"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="fullScreenMode1">Yes</label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" [value]="false" id="fullScreenMode2" formControlName="fullScreenMode"
+                                          class="custom-control-input" >
+                                        <label class="custom-control-label" for="fullScreenMode2">No</label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <h6 class="mb-0 mt-0">No. Of Attemp</h6>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input type="text" formControlName="numberOfAttempts" class="form-control"
+                                  placeholder="3">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 text-center">
+                <button routerLink="/test/{{testId}}/edit-test" class="btn btn-danger mr-3">Previous</button>
+                <button class="btn btn-primary">Next</button>
+                <!-- type="button" routerLink="/test/add-questions" -->
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="text-danger fs-34 material-icons mr-2 icon-image-preview  mb-2">delete_outline</span>
+
+          <h6>Are you sure want to delete?</h6>
+        </div>
+      </div>
+      <hr />
+      <div class="row m-t-15">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-sm btn-success mr-1" data-target="#delete-sccess-modal"
+            data-toggle="modal" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-sm btn-danger ml-1" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

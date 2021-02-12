@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content">
+    <ng-chat
+      [adapter]="adapter"
+      [hideFriendsList]="true"
+      [userId]="1"
+      #ngChatInstance
+    ></ng-chat>
+  </div>
+</div>
+
+<app-footer></app-footer>

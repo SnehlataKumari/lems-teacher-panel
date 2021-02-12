@@ -1,0 +1,182 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+      <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+            <h3 class="mb-0">Test</h3>
+            <ol class="breadcrumb p-0 m-0">
+              <li class="breadcrumb-item"><a>Test</a></li>
+              <li class="breadcrumb-item active">
+                Test Setting
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div class="container page__container">
+        <div class="row">
+          <div class="col-sm-12 col-12 col-md-12 col-lg-12">
+            <div class="py-32pt navbar-submenu">
+              <div class="container page__container">
+                <div class="progression-bar progression-bar--active-accent">
+                  <a routerLink="/test/{{testId}}/edit-test"
+                    class="progression-bar__item progression-bar__item--complete progression-bar__item--active">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Create Test</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/test-setting" class="progression-bar__item">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Test Setting</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/add-questions" class="progression-bar__item">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Add Question</span>
+                    </span>
+                  </a>
+                  <a routerLink="/test/{{testId}}/send-request" class="progression-bar__item">
+                    <span class="progression-bar__item-content">
+                      <i class="material-icons progression-bar__item-icon"></i>
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Publish Now</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form (ngSubmit)="onAddTest()" [formGroup]="addTestForm">
+          <div class="mt-4 row">
+            <div class="col-md-10 p-0 mx-auto">
+              <div class="list-group list-group-form mb-0">
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Enter Test Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" formControlName="testName" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Enter Test Code</label>
+                    <div class="col-sm-8">
+                      <input type="text" formControlName="testCode" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Total No. Of Question</label>
+                    <div class="col-sm-8">
+                      <input type="number" formControlName="totalNoOfQuestions" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Select Test Instruction</label>
+                    <div class="col-sm-8">
+                      <select formControlName="testInstruction" class="form-control">
+                        <option>choose1</option>
+                        <option>choose2</option>
+                        <option>choose3</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Select Category</label>
+                    <div class="col-sm-8">
+                      <select formControlName="testCategory" class="form-control">
+                        <option>choose1</option>
+                        <option>choose2</option>
+                        <option>choose3</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Difficulty Level <span
+                        tooltip="Slide to the right" flow="right"><span
+                          class="material-icons fs-16 ml-1 icon-image-preview">info</span></span></label>
+                    <div class="col-sm-8">
+                      <select formControlName="testDificultyLevel" class="form-control">
+                        <option>Select Difficulty</option>
+                        <option>Difficulty Level 1</option>
+                        <option>Difficulty Level 2</option>
+                        <option>Difficulty Level 3</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="list-group-item">
+                  <div class="form-group row align-items-center mb-0">
+                    <label class="col-form-label form-label col-sm-4">Test Duration in Minutes</label>
+                    <div class="col-sm-8">
+                      <input type="number" formControlName="testDurationInMin" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-form-label form-label col-sm-4">Quiz</label>
+                                <div class="col-sm-8">
+                                    <div class="custom-control custom-radio">
+                                        <input id="radioStacked1" formControlName="quiz" name="radio-stacked" type="radio" class="custom-control-input">
+                                        <label for="radioStacked1" class="custom-control-label">
+                                            <button type="button" (click)="onPublishTest()" class="btn btn-sm btn-success">Publish Now</button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                <div class="list-group-item text-center">
+                  <button [disabled]="addTestForm.invalid" class="btn btn-primary">
+                    <span *ngIf="!testId">Save & Next</span>
+                    <span *ngIf="testId">Update & Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="text-danger fs-34 material-icons mr-2 icon-image-preview  mb-2">delete_outline</span>
+
+          <h6>Are you sure want to delete?</h6>
+        </div>
+      </div>
+      <hr />
+      <div class="row m-t-15">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-sm btn-success mr-1" data-target="#delete-sccess-modal"
+            data-toggle="modal" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-sm btn-danger ml-1" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

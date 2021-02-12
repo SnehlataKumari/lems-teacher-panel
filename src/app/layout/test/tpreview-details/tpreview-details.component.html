@@ -1,0 +1,146 @@
+<app-header></app-header>
+<div class="pcoded-main-container">
+  <app-sidebar></app-sidebar>
+  <div class="mdk-header-layout__content page-content ">
+    <div class="pt-32pt">
+      <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+            <h3 class="mb-0">Test Preview</h3>
+            <ol class="breadcrumb p-0 m-0">
+              <li class="breadcrumb-item"><a>Test Preview</a></li>
+              <li class="breadcrumb-item active">
+                My Test
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div class="container page__container">
+        <div class="row" *ngIf="test">
+
+          <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+            <div class="card">
+              <h6 class="card-title border-bottom p-3 mb-0 header-title">
+                {{test.testName}}
+                <span class="float-right">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-clock align-self-center icon-dual icon-lg mr-1">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>{{test.testDurationInMin}} min.</span></h6>
+            </div>
+          </div>
+          <div class="col-md-9 col-lg-9 col-sm-12 col-12">
+            <div class="card min-height-quiz">
+              <div class="card-body">
+                <div>
+                  <div class="align-items-center mb-16pt">
+                    <h4 class="mt-0">Question {{selectedQuestionIndex+1}}</h4>
+                  </div>
+                  <h5 class="text-70 measure-lead mb-32pt mb-lg-28pt">{{selectedQuestion.questionTitle}}
+                  </h5>
+                  <div class="lst-1">
+                    <textarea *ngIf="selectedQuestion.questionType === 'Text'" name="" id="" cols="120" rows="10"></textarea>
+                    <ul *ngIf="selectedQuestion.questionType === 'MCQ'" class="list-quiz">
+                      <li class="list-quiz-item"
+                        *ngFor="let option of selectedQuestion.options; index as i"
+                        (click)="selectOption(i)"
+                      >
+                        <span class="list-quiz-badge" [ngClass]="{'bg-primary text-white': selectedOptionIndex[selectedQuestionIndex] === i}">
+                          <ng-container *ngIf="i ===0">A</ng-container>
+                          <ng-container *ngIf="i ===1">B</ng-container>
+                          <ng-container *ngIf="i ===2">C</ng-container>
+                          <ng-container *ngIf="i ===3">D</ng-container>
+                        </span>
+                        <span class="list-quiz-text">{{option.title}}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              
+              <div class="quiz-rule">
+                <ul>
+                  <li class="pointer" routerLink="/test/preview-instruction">
+                    <span class="fs-16 mr-2 material-icons icon-image-preview">info</span>
+                    Instruction
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+                        <div class="text-center">
+                          <button routerLink="/test/{{testId}}/send-request" class="btn btn-primary">Save</button>
+                        </div>
+          </div> <!-- end col -->
+          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
+            <div class="card">
+              <div class="quiz-option">
+                <ul>
+                  <li *ngFor="let q of test.questionDetails.questions; index as i">
+                    <div class="quiz-bt" (click)="selectQuestion(q, i)">
+                      {{i+1}}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card">
+              <div class="quiz-rule">
+                <ul>
+                  <li>
+                    <div class="sky"></div>
+                    Attempted
+                  </li>
+                  <li>
+                    <div class="s-circle"></div>
+                    Unattempted
+                  </li>
+                  <li>
+                    <div class="s-voi"></div>
+                    Review
+                  </li>
+                  <li>
+                    <div class="s-skip"></div>
+                    Skip
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div> <!-- end col -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<div id="delete-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-body text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="text-danger fs-34 material-icons mr-2 icon-image-preview  mb-2">delete_outline</span>
+
+          <h6>Are you sure want to delete?</h6>
+        </div>
+      </div>
+      <hr />
+      <div class="row m-t-15">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-sm btn-success mr-1" data-target="#delete-sccess-modal"
+            data-toggle="modal" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-sm btn-danger ml-1" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
